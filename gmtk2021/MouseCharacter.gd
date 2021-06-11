@@ -25,9 +25,16 @@ func _unhandled_input(event):
 		
 		#choosing whether it was a horizontal or a vertical swipe
 		if abs(final_mouse_position.x - initial_mouse_position.x) > abs(final_mouse_position.y - initial_mouse_position.y):
-			print("swipe was horizontal ")
+			#choosing whether swipe was to the right or to the left
+			if final_mouse_position.x - initial_mouse_position.x > 0 :
+				print("attack to the right")
+			else:
+				print("attack to the left")
 		else:
-			print("swipe was vertical ")
+			if final_mouse_position.y - initial_mouse_position.y > 0 :
+				print("attack ice-wall")
+			else:
+				print("attack fire-wall")
 
 func _physics_process(delta):
 	movement_loop(delta)
