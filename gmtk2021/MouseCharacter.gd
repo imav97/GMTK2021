@@ -1,32 +1,41 @@
 extends KinematicBody2D
 
-#movement variables
-export var speed :=  25
-var velocity := Vector2.ZERO
-var mouse_position := Vector2.ZERO
+var max_speed := 400
+var speed := 0 
+var acceleration := 1200
+var move_direction
+var moving := false
+var destination := Vector2.ZERO
+var movement := Vector2.ZERO
 
 
-func get_movement():
-	if self.position.x > mouse_position.x:
-		velocity.x = -1
-		print(self.position.x)
-	else:
-		velocity.x = 1
+
+func _unhandled_input(event):
+	if event.is_action_pressed("left_click"):
+		moving=true
+		destination = get_global_mouse_position()
+
+
+func _process(delta):
 	
-	if self.position.y > mouse_position.y:
-		velocity.y = -1
-	else:
-		velocity.y = 1
-			
-		velocity = velocity * speed
-
-
-func _input(event):
-	if event is InputEventMouseButton:
-		mouse_position = get_viewport().get_mouse_position()
-		print(mouse_position)
+	pass
 
 
 func _physics_process(delta):
-	get_movement()
-	velocity = move_and_slide(velocity)
+	movement_loop(delta)
+
+
+func movement_loop(delta):
+	if !moving:
+		speed = 0
+	else:
+		speed += acceleration * delta
+		if speed > max_speed:
+			speed = max_speed
+	movement = position.direction_to(destination) * speed
+
+
+
+
+
+
