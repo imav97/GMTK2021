@@ -13,6 +13,8 @@ GMTK GameJam 2021 Entry
 
 * TWEWY-like game
 
-*
+* A game where you move a wrecking ball around you that's linked to you by a chain, you clear rooms full of enemies with it.
+
+
 
 
