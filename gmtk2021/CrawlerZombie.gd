@@ -10,9 +10,7 @@ var is_chasing: bool = false
 var timer
 var velocity := Vector2.ZERO
 var speed := 100
-
 var health := 50
-
 
 
 
@@ -20,6 +18,7 @@ func _physics_process(delta: float) -> void:
 	if timer:
 		if timer.get_time_left() < 0.75:
 			speed = 300
+			print("executing timer")
 		
 
 	if !player == null:
@@ -63,7 +62,8 @@ func _on_timer_timeout():
 
 
 func _on_Area2D_body_entered(body):
-	if body.get_name() == "Saladdin" or body.get_name() == "Templar":
+	if body.name == "Saladin" or body.name == "Templar":
 		ani_player.play("attack")
+		print(body.name)
 	else:
 		pass
