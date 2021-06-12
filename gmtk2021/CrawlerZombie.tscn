@@ -5,7 +5,6 @@
 
 [sub_resource type="Animation" id=3]
 resource_name = "attack"
-loop = true
 step = 0.075
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -70,7 +69,7 @@ anims/walk = SubResource( 1 )
 position = Vector2( 0, -10.6314 )
 texture = ExtResource( 1 )
 hframes = 9
-frame = 1
+frame = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
