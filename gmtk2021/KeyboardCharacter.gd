@@ -19,16 +19,15 @@ func get_input():
 	velocity = Vector2.ZERO
 	if Input.is_action_pressed('right'):
 		velocity.x += 1
-		ani_player.play("walk")
+		$Sprite.flip_h = false
 	if Input.is_action_pressed('left'):
 		velocity.x -= 1
-		ani_player.play("walk")
+		$Sprite.flip_h = true
 	if Input.is_action_pressed('down'):
 		velocity.y += 1
-		ani_player.play("walk")
 	if Input.is_action_pressed('up'):
 		velocity.y -= 1
-		ani_player.play("walk")
+		
 	
 	velocity = velocity.normalized() * speed
 
@@ -37,21 +36,23 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity)
 	if velocity != Vector2.ZERO:
 		$RayCast2D.cast_to = velocity.normalized() * 10
+		ani_player.play("walk")
+	else:
+		ani_player.stop()
 
 
 func _input(event):
-	if event.is_action_pressed("attack"):
+	if event.is_action_pressed("simple_attack"):
 	# Check if player can attack
 		var now = OS.get_ticks_msec()
 		if now >= next_attack_time:
 			# Add cooldown time to current time
 			next_attack_time = now + attack_cooldown_time
+			print("melee attack")
+			var enemy = $RayCast2D.get_collider()
+			if enemy != null:
+				if enemy.name.find("BaseZombie") >= 0:
+					enemy.melee_hit(attack_damage)
 	
-	if event.is_action_pressed("simple_attack"):
-		print("melee attack")
-		var enemy = $RayCast2D.get_collider()
-		if enemy != null:
-			if enemy.name.find("BaseZombie") >= 0:
-				enemy.melee_hit(attack_damage)
 	if event.is_action_pressed("mana_attack"):
 		print("range attack")
