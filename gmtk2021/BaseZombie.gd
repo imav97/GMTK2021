@@ -41,3 +41,4 @@ func get_movement_direction():
 		velocity.y += 1
 	else:
 		velocity.y -= 1
+	
