@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var acceleration := 1200
+var acceleration := 800
 
 var initial_mouse_position := Vector2.ZERO
 var final_mouse_position := Vector2.ZERO

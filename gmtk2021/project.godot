@@ -10,12 +10,12 @@ config_version=4
 
 _global_script_classes=[  ]
 _global_script_class_icons={
-
 }
 
 [application]
 
 config/name="gmtk2021"
+run/main_scene="res://TEST_SCENE.tscn"
 config/icon="res://icon.png"
 
 [input]
