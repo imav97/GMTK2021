@@ -1,6 +1,8 @@
 extends KinematicBody2D
 signal took_damage(damage)
 
+const PROJECTILE: PackedScene = preload("res://Projectile.tscn")
+
 #movement variables
 export var speed := 350
 var velocity := Vector2.ZERO
@@ -53,11 +55,14 @@ func _input(event):
 			next_attack_time = now + attack_cooldown_time
 			var enemy = $RayCast2D.get_collider()
 			if enemy != null:
-				if enemy.name.find("BaseZombie") >= 0 or enemy.name.find("CrawlerZombie") >= 0:
-					enemy.melee_hit(attack_damage)
+				if enemy.has_method("take_damage"):
+					enemy.take_damage(attack_damage)
 	
 	if event.is_action_pressed("mana_attack"):
-		print("range attack")
+		var projectile: KinematicBody2D = PROJECTILE.instance()
+		var direction = $RayCast2D.cast_to.normalized()
+		projectile.init(direction, self.position, attack_damage)
+		get_tree().root.add_child(projectile)
 
 
 func play_idle():
@@ -68,4 +73,8 @@ func _take_damage(damage: int) -> void:
 
 
 func finished_animation():
+	ani_playing = false
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
 	ani_playing = false
