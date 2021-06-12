@@ -105,16 +105,21 @@ func _fire_projectile(direction: Vector2):
 
 
 func _slash_attack(direction: Vector2):
-	$RayCast2D.cast_to = direction * melee_range
-	
-	if $RayCast2D.is_colliding():
-		var collider: Object = $RayCast2D.get_collider()
-		# TODO: Do damage to colliders
+	if projectile_gauge > 0:
+		$RayCast2D.cast_to = direction * melee_range
 		
-		melee_gauge -= melee_depletion
-		
-		if melee_gauge <= 0:
-			melee_depleted = true
+		if $RayCast2D.is_colliding():
+			var collider: Object = $RayCast2D.get_collider()
+			if collider.has_method("take_damage"):
+				collider.take_damage(melee_damage)
+			
+			melee_gauge -= melee_depletion
+			
+			if melee_gauge <= 0:
+				melee_depleted = true
+	else:
+		# TODO: Animation no energy for projectile
+		pass
 
 
 func _take_damage(damage: int) -> void:
