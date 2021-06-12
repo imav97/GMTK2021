@@ -21,7 +21,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 8.32584, 5.40091 )
+extents = Vector2( 6.79761, 13.8036 )
 
 [node name="CrawlerZombie" type="KinematicBody2D"]
 
@@ -29,9 +29,10 @@ extents = Vector2( 8.32584, 5.40091 )
 anims/walk = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -10.6314 )
 texture = ExtResource( 1 )
 hframes = 3
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.500572, 10.8456 )
 shape = SubResource( 2 )
