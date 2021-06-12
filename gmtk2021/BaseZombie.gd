@@ -19,10 +19,8 @@ var health := 100
 func _physics_process(delta: float) -> void:
 	if !player == null:
 		if self.position.distance_squared_to(player.position) < DETECTION_RANGE:
-			get_movement_direction()
-			velocity = velocity.normalized() * speed
-			
-			velocity = move_and_slide(velocity)
+			var player_direction = (player.position - self.position).normalized()
+			move_and_slide(speed * player_direction)
 		
 		
 	if health <= 0:
