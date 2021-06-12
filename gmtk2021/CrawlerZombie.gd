@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 		get_tree().queue_delete(self)
 
 
-func melee_hit(damage):
+func take_damage(damage: int) -> void:
 	health -= damage
 	print('melee hit registered')
 
