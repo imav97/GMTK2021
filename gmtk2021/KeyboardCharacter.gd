@@ -9,18 +9,26 @@ export var attack_cooldown_time := 1000
 export var attack_damage := 30
 var next_attack_time := 0
 
+#animation variables
+onready var ani_player := $AnimationPlayer
+var ani_playing := false
+
 
 
 func get_input():
 	velocity = Vector2.ZERO
 	if Input.is_action_pressed('right'):
 		velocity.x += 1
+		ani_player.play("walk")
 	if Input.is_action_pressed('left'):
 		velocity.x -= 1
+		ani_player.play("walk")
 	if Input.is_action_pressed('down'):
 		velocity.y += 1
+		ani_player.play("walk")
 	if Input.is_action_pressed('up'):
 		velocity.y -= 1
+		ani_player.play("walk")
 	
 	velocity = velocity.normalized() * speed
 
