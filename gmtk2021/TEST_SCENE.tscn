@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://KeyboardCharacter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://BaseZombie.tscn" type="PackedScene" id=2]
 [ext_resource path="res://TEST_SCENE.gd" type="Script" id=3]
-[ext_resource path="res://CrawlerZombie.tscn" type="PackedScene" id=4]
 
 [node name="TEST_SCENE" type="Node2D"]
 script = ExtResource( 3 )
@@ -12,8 +11,4 @@ script = ExtResource( 3 )
 position = Vector2( 187.525, 298.768 )
 
 [node name="KeyboardMovement" parent="." instance=ExtResource( 1 )]
-position = Vector2( 391.141, 311.368 )
-
-[node name="CrawlerZombie" parent="." instance=ExtResource( 4 )]
-position = Vector2( 78.3179, 298.194 )
-scale = Vector2( 5.20561, 4.96144 )
+position = Vector2( 483.115, 322.077 )
