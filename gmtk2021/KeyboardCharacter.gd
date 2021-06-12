@@ -18,15 +18,15 @@ var ani_playing := false
 
 func get_input():
 	velocity = Vector2.ZERO
-	if Input.is_action_pressed('right'):
+	if Input.is_action_pressed('right') and !ani_playing:
 		velocity.x += 1
 		$Sprite.flip_h = false
-	if Input.is_action_pressed('left'):
+	if Input.is_action_pressed('left') and !ani_playing:
 		velocity.x -= 1
 		$Sprite.flip_h = true
-	if Input.is_action_pressed('down'):
+	if Input.is_action_pressed('down') and !ani_playing:
 		velocity.y += 1
-	if Input.is_action_pressed('up'):
+	if Input.is_action_pressed('up')and !ani_playing:
 		velocity.y -= 1
 	
 	if Input.is_action_just_released("down") or Input.is_action_just_released("up") or Input.is_action_just_released("right") or Input.is_action_just_released("left"):
@@ -45,6 +45,7 @@ func _physics_process(delta):
 func _input(event):
 	if event.is_action_pressed("simple_attack"):
 		ani_player.play("attack")
+		ani_playing = true
 		# Check if player can attack
 		var now = OS.get_ticks_msec()
 		if now >= next_attack_time:
@@ -52,7 +53,7 @@ func _input(event):
 			next_attack_time = now + attack_cooldown_time
 			var enemy = $RayCast2D.get_collider()
 			if enemy != null:
-				if enemy.name.find("BaseZombie") >= 0:
+				if enemy.name.find("BaseZombie") >= 0 or enemy.name.find("CrawlerZombie") >= 0:
 					enemy.melee_hit(attack_damage)
 	
 	if event.is_action_pressed("mana_attack"):
@@ -64,3 +65,7 @@ func play_idle():
 	
 func _take_damage(damage: int) -> void:
 	emit_signal("took_damage", damage)
+
+
+func finished_animation():
+	ani_playing = false

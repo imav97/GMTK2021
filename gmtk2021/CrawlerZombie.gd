@@ -7,18 +7,21 @@ onready var ani_player := $AnimationPlayer
 
 var player: KinematicBody2D
 var is_chasing: bool = false
-var attack_timer := Timer
+var timer
 var velocity := Vector2.ZERO
 var speed := 100
 
 var health := 50
 
 
-func _init():
-	attack_timer.set_wait_time(1.0)
 
 
 func _physics_process(delta: float) -> void:
+	if timer:
+		if timer.get_time_left() < 0.75:
+			speed = 300
+		
+
 	if !player == null:
 		ani_player.play("walk")
 		if self.position.distance_squared_to(player.position) < DETECTION_RANGE:
@@ -45,9 +48,22 @@ func get_movement_direction():
 		velocity.y += 1
 	else:
 		velocity.y -= 1
-	
 
 
 func jump_attack():
-	
-	pass
+	speed = 0
+	timer = Timer.new() 
+	timer.connect("timeout", self, "_on_timer_timeout")
+	timer.one_shot = true
+	timer.start()
+
+
+func _on_timer_timeout():
+	speed = 75
+
+
+func _on_Area2D_body_entered(body):
+	if body.get_name() == "Saladdin" or body.get_name() == "Templar":
+		ani_player.play("attack")
+	else:
+		pass
