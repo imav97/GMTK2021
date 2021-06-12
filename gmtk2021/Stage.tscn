@@ -34,6 +34,7 @@ position = Vector2( 0, 600 )
 [node name="Timer" type="Timer" parent="Spawn4"]
 wait_time = 4.0
 autostart = true
+
 [connection signal="timeout" from="Spawn1/Timer" to="." method="_on_Timer_timeout" binds= [ 0 ]]
 [connection signal="timeout" from="Spawn2/Timer" to="." method="_on_Timer_timeout" binds= [ 1 ]]
 [connection signal="timeout" from="Spawn3/Timer" to="." method="_on_Timer_timeout" binds= [ 2 ]]

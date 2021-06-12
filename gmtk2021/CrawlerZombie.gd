@@ -51,6 +51,7 @@ func get_movement_direction():
 
 
 func jump_attack():
+	speed = 0
 	timer = Timer.new() 
 	timer.connect("timeout", self, "_on_timer_timeout")
 	timer.one_shot = true
@@ -59,3 +60,10 @@ func jump_attack():
 
 func _on_timer_timeout():
 	speed = 75
+
+
+func _on_Area2D_body_entered(body):
+	if body.get_name() == "Saladdin" or body.get_name() == "Templar":
+		ani_player.play("attack")
+	else:
+		pass

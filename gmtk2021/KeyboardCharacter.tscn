@@ -33,6 +33,20 @@ tracks/1/keys = {
 "method": "play_idle"
 } ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.375 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "finished_animation"
+} ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "idle"
@@ -70,7 +84,7 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 5.93268, 15.9614 )
 
-[node name="KeyboardMovement" type="KinematicBody2D"]
+[node name="Saladdin" type="KinematicBody2D"]
 scale = Vector2( 5.68861, 5.43351 )
 collision_layer = 2
 script = ExtResource( 1 )
@@ -86,7 +100,7 @@ anims/walk = SubResource( 3 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 hframes = 9
-frame = 8
+frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 4 )
