@@ -14,16 +14,18 @@ var final_mouse_position := Vector2.ZERO
 
 
 func _unhandled_input(event):
+	#movement input
 	if event.is_action_pressed("right_click"):
 		moving=true
 		destination = get_global_mouse_position()
 	
+	#attack input
 	if event.is_action_pressed("left_click"):
 		initial_mouse_position = event.position
 	if event.is_action_released("left_click"):
 		final_mouse_position = event.position
 		
-		#choosing whether it was a horizontal or a vertical swipe
+		#choosing whether swipe was a horizontal or a vertical swipe
 		if abs(final_mouse_position.x - initial_mouse_position.x) > abs(final_mouse_position.y - initial_mouse_position.y):
 			#choosing whether swipe was to the right or to the left
 			if final_mouse_position.x - initial_mouse_position.x > 0 :

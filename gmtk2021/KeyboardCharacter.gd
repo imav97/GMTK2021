@@ -38,3 +38,8 @@ func _input(event):
 		if now >= next_attack_time:
 			# Add cooldown time to current time
 			next_attack_time = now + attack_cooldown_time
+	
+	if event.is_action_pressed("simple_attack"):
+		print("melee attack")
+	if event.is_action_pressed("simple_attack"):
+		print("melee attack")
