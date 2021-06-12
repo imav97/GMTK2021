@@ -1,60 +1,60 @@
 extends KinematicBody2D
 
-var max_speed := 400
-var speed := 0 
 var acceleration := 1200
-var move_direction
-var moving := false
-var destination := Vector2.ZERO
-var movement := Vector2.ZERO
 
 var initial_mouse_position := Vector2.ZERO
 var final_mouse_position := Vector2.ZERO
 
+var attack_direction: Vector2 = Vector2.ZERO
+
 
 
 func _unhandled_input(event):
-	#movement input
-	if event.is_action_pressed("right_click"):
-		moving=true
-		destination = get_global_mouse_position()
-	
-	#attack input
 	if event.is_action_pressed("left_click"):
 		initial_mouse_position = event.position
 	if event.is_action_released("left_click"):
 		final_mouse_position = event.position
 		
+		var delta_x: float = final_mouse_position.x - initial_mouse_position.x
+		var delta_y: float = final_mouse_position.y - initial_mouse_position.y
+		
+		if abs(delta_x) < 5 and abs(delta_y) < 5:
+			print("tap")
+			return
+		
 		#choosing whether swipe was a horizontal or a vertical swipe
-		if abs(final_mouse_position.x - initial_mouse_position.x) > abs(final_mouse_position.y - initial_mouse_position.y):
+		if abs(delta_x) > abs(delta_y):
 			#choosing whether swipe was to the right or to the left
-			if final_mouse_position.x - initial_mouse_position.x > 0 :
-				print("attack to the right")
+			if delta_x > 0 :
+				attack_direction = Vector2.RIGHT
 			else:
-				print("attack to the left")
-		else:
-			if final_mouse_position.y - initial_mouse_position.y > 0 :
-				print("attack ice-wall")
-			else:
-				print("attack fire-wall")
-
+				attack_direction = Vector2.LEFT
+		
 
 func _physics_process(delta):
 	movement_loop(delta)
 
 
 func movement_loop(delta):
-	if !moving:
-		speed = 0
+	var direction: Vector2 = Vector2.ZERO
+	
+	if Input.is_mouse_button_pressed(BUTTON_RIGHT):
+		var mouse_position: Vector2 = get_viewport().get_mouse_position()
+		if mouse_position.x > self.position.x:
+			$Sprite.flip_h = false
+		else:
+			$Sprite.flip_h = true
+		if self.position.distance_squared_to(mouse_position) > 100:
+			direction = self.position.direction_to(mouse_position)
+	
+	var speed: Vector2 = direction * acceleration
+	
+	if speed.length_squared() > 0:
+		$AnimationPlayer.play("walk")
 	else:
-		speed += acceleration * delta
-		if speed > max_speed:
-			speed = max_speed
-	movement = position.direction_to(destination) * speed
-	if position.distance_to(destination) > 5:
-		movement = move_and_slide(movement)
-	else:
-		moving = false
+		$AnimationPlayer.stop()
+	
+	move_and_slide(speed, Vector2.UP)
 
 
 
