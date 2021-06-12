@@ -7,6 +7,7 @@ onready var enemies: Node = $Enemies
 
 func _process(delta: float) -> void:
 	if enemies.get_child_count() <= 0:
+		# TODO: Add stage switch animations
 		_spawn_wave()
 
 

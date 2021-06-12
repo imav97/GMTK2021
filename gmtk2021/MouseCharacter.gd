@@ -19,7 +19,7 @@ func _unhandled_input(event):
 		var delta_y: float = final_mouse_position.y - initial_mouse_position.y
 		
 		if abs(delta_x) < 5 and abs(delta_y) < 5:
-			print("tap")
+			_fire_projectile(self.position.direction_to(final_mouse_position))
 			return
 		
 		#choosing whether swipe was a horizontal or a vertical swipe
@@ -31,11 +31,11 @@ func _unhandled_input(event):
 				attack_direction = Vector2.LEFT
 		
 
-func _physics_process(delta):
-	movement_loop(delta)
+func _physics_process(delta: float):
+	_movement_loop(delta)
 
 
-func movement_loop(delta):
+func _movement_loop(delta: float):
 	var direction: Vector2 = Vector2.ZERO
 	
 	if Input.is_mouse_button_pressed(BUTTON_RIGHT):
@@ -55,6 +55,16 @@ func movement_loop(delta):
 		$AnimationPlayer.stop()
 	
 	move_and_slide(speed, Vector2.UP)
+	
+
+func _fire_projectile(direction: Vector2):
+	# TODO: Add to root a projectile moving towards the given direction
+	pass
+
+
+func _slash_attack():
+	# TODO: Do damage in the melee range of the attack_direction
+	pass
 
 
 

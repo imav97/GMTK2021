@@ -24,7 +24,7 @@ tracks/0/keys = {
 extents = Vector2( 7.63687, 14.7958 )
 
 [node name="MouseCharacter" type="KinematicBody2D"]
-scale = Vector2( 7.18842, 6.48964 )
+scale = Vector2( 5, 5 )
 collision_layer = 2
 script = ExtResource( 2 )
 
