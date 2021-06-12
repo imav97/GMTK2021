@@ -1,6 +1,23 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Resources/zombie_crawler.png" type="Texture" id=1]
+
+[sub_resource type="Animation" id=3]
+resource_name = "attack"
+loop = true
+step = 0.075
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.075, 0.15, 0.225, 0.3, 0.375 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 2,
+"values": [ 3, 4, 5, 6, 7, 8 ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "walk"
@@ -26,13 +43,14 @@ extents = Vector2( 6.79761, 13.8036 )
 [node name="CrawlerZombie" type="KinematicBody2D"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/attack = SubResource( 3 )
 anims/walk = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -10.6314 )
 texture = ExtResource( 1 )
-hframes = 3
-frame = 1
+hframes = 9
+frame = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
