@@ -27,7 +27,9 @@ func get_input():
 		velocity.y += 1
 	if Input.is_action_pressed('up'):
 		velocity.y -= 1
-		
+	
+	if Input.is_action_just_released("down") or Input.is_action_just_released("up") or Input.is_action_just_released("right") or Input.is_action_just_released("left"):
+		play_idle()
 	
 	velocity = velocity.normalized() * speed
 
@@ -37,8 +39,6 @@ func _physics_process(delta):
 	if velocity != Vector2.ZERO:
 		$RayCast2D.cast_to = velocity.normalized() * 18
 		ani_player.play("walk")
-	elif !ani_player.is_playing():
-		ani_player.stop()
 
 
 func _input(event):
@@ -56,3 +56,7 @@ func _input(event):
 	
 	if event.is_action_pressed("mana_attack"):
 		print("range attack")
+
+
+func play_idle():
+	ani_player.play("idle")
