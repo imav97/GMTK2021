@@ -53,6 +53,7 @@ tracks/1/keys = {
 
 [node name="KeyboardMovement" type="KinematicBody2D"]
 scale = Vector2( 5.68861, 5.43351 )
+z_index = 1
 collision_layer = 2
 script = ExtResource( 1 )
 __meta__ = {

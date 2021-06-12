@@ -11,6 +11,7 @@ var timer
 var velocity := Vector2.ZERO
 var speed := 100
 var health := 50
+var attacking:=false
 
 
 
@@ -21,7 +22,7 @@ func _physics_process(delta: float) -> void:
 			print("executing timer")
 		
 
-	if !player == null:
+	if !player == null and !attacking:
 		ani_player.play("walk")
 		if self.position.distance_squared_to(player.position) < DETECTION_RANGE:
 			var player_direction = (player.position - self.position).normalized()
@@ -50,6 +51,8 @@ func get_movement_direction():
 
 
 func jump_attack():
+	print("attacking")
+	attacking = true
 	speed = 0
 	timer = Timer.new() 
 	timer.connect("timeout", self, "_on_timer_timeout")
@@ -59,11 +62,11 @@ func jump_attack():
 
 func _on_timer_timeout():
 	speed = 75
+	print('timer timedout')
+	attacking = false
 
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Saladin" or body.name == "Templar":
 		ani_player.play("attack")
-		print(body.name)
-	else:
-		pass
+		print("detected: ", body.name)

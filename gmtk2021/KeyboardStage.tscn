@@ -6,5 +6,5 @@
 [node name="KeyboardStage" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Saladdin" parent="." instance=ExtResource( 1 )]
-position = Vector2( 743.743, 309.363 )
+[node name="Saladin" parent="." instance=ExtResource( 1 )]
+position = Vector2( 548.802, 311.482 )
