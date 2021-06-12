@@ -1,11 +1,28 @@
 extends KinematicBody2D
 
-var acceleration := 800
+const PROJECTILE: PackedScene = preload("res://Projectile.tscn")
+const ACCELERATION: int = 800
+
+
+export var projectile_damage: int = 10
+export var projectile_gauge: int = 100
+export var projectile_depletion: int = 15
+export var projectile_recovery: int = 5
+
+export var melee_damage: int = 30
+export var melee_range: int = 40
+export var melee_gauge: int = 100
+export var melee_depletion: int = 10
+export var melee_recovery: int = 5
+
 
 var initial_mouse_position := Vector2.ZERO
 var final_mouse_position := Vector2.ZERO
 
 var attack_direction: Vector2 = Vector2.ZERO
+
+var projectile_depleted: bool = false
+var melee_depleted: bool = false
 
 
 
@@ -25,14 +42,29 @@ func _unhandled_input(event):
 		#choosing whether swipe was a horizontal or a vertical swipe
 		if abs(delta_x) > abs(delta_y):
 			#choosing whether swipe was to the right or to the left
-			if delta_x > 0 :
-				attack_direction = Vector2.RIGHT
+			
+			if final_mouse_position.x > self.position.x:
+				$Sprite.flip_h = false
 			else:
-				attack_direction = Vector2.LEFT
-		
+				$Sprite.flip_h = true
+				
+			_slash_attack(self.position.direction_to(final_mouse_position))
+			
 
 func _physics_process(delta: float):
 	_movement_loop(delta)
+	
+	if projectile_depleted:
+		projectile_gauge += projectile_recovery * delta
+		if projectile_gauge >= 100:
+			projectile_gauge = 100
+			projectile_depleted = false
+	
+	if melee_depleted:
+		melee_gauge += melee_recovery * delta
+		if melee_gauge >= 100:
+			melee_gauge = 100
+			melee_depleted = false
 
 
 func _movement_loop(delta: float):
@@ -47,7 +79,7 @@ func _movement_loop(delta: float):
 		if self.position.distance_squared_to(mouse_position) > 100:
 			direction = self.position.direction_to(mouse_position)
 	
-	var speed: Vector2 = direction * acceleration
+	var speed: Vector2 = direction * ACCELERATION
 	
 	if speed.length_squared() > 0:
 		$AnimationPlayer.play("walk")
@@ -58,15 +90,28 @@ func _movement_loop(delta: float):
 	
 
 func _fire_projectile(direction: Vector2):
-	# TODO: Add to root a projectile moving towards the given direction
-	pass
+	if projectile_gauge > 0:
+		var projectile: KinematicBody2D = PROJECTILE.instance()
+		projectile.init(direction, self.position, projectile_damage)
+		get_tree().root.add_child(projectile)
+		
+		projectile_gauge -= projectile_depletion
+		
+		if projectile_gauge <= 0:
+			projectile_depleted = true
+	else:
+		# TODO: Animation no energy for projectile
+		pass
 
 
-func _slash_attack():
-	# TODO: Do damage in the melee range of the attack_direction
-	pass
-
-
-
-
-
+func _slash_attack(direction: Vector2):
+	$RayCast2D.cast_to = direction * melee_range
+	
+	if $RayCast2D.is_colliding():
+		var collider: Object = $RayCast2D.get_collider()
+		# TODO: Do damage to colliders
+		
+		melee_gauge -= melee_depletion
+		
+		if melee_gauge <= 0:
+			melee_depleted = true
