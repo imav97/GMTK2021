@@ -49,5 +49,9 @@ func _input(event):
 	
 	if event.is_action_pressed("simple_attack"):
 		print("melee attack")
-	if event.is_action_pressed("simple_attack"):
-		print("melee attack")
+		var enemy = $RayCast2D.get_collider()
+		if enemy != null:
+			if enemy.name.find("BaseZombie") >= 0:
+				enemy.melee_hit(attack_damage)
+	if event.is_action_pressed("mana_attack"):
+		print("range attack")
