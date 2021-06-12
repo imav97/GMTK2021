@@ -29,6 +29,7 @@ func _physics_process(delta: float) -> void:
 
 func melee_hit(damage):
 	health -= damage
+	print('melee hit registered')
 
 
 func get_movement_direction():
