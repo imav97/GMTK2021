@@ -1,4 +1,5 @@
 extends KinematicBody2D
+signal took_damage(damage)
 
 #movement variables
 export var speed := 350
@@ -61,6 +62,9 @@ func _input(event):
 
 func play_idle():
 	ani_player.play("idle")
+	
+func _take_damage(damage: int) -> void:
+	emit_signal("took_damage", damage)
 
 
 func finished_animation():
