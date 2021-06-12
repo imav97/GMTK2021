@@ -1,4 +1,5 @@
 extends KinematicBody2D
+signal took_damage(damage)
 
 const PROJECTILE: PackedScene = preload("res://Projectile.tscn")
 const ACCELERATION: int = 800
@@ -14,7 +15,6 @@ export var melee_range: int = 40
 export var melee_gauge: int = 100
 export var melee_depletion: int = 10
 export var melee_recovery: int = 5
-
 
 var initial_mouse_position := Vector2.ZERO
 var final_mouse_position := Vector2.ZERO
@@ -71,7 +71,7 @@ func _movement_loop(delta: float):
 	var direction: Vector2 = Vector2.ZERO
 	
 	if Input.is_mouse_button_pressed(BUTTON_RIGHT):
-		var mouse_position: Vector2 = get_viewport().get_mouse_position()
+		var mouse_position: Vector2 = get_global_mouse_position()
 		if mouse_position.x > self.position.x:
 			$Sprite.flip_h = false
 		else:
@@ -115,3 +115,7 @@ func _slash_attack(direction: Vector2):
 		
 		if melee_gauge <= 0:
 			melee_depleted = true
+
+
+func _take_damage(damage: int) -> void:
+	emit_signal("took_damage", damage)
