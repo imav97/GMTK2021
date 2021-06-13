@@ -26,6 +26,8 @@ var attack_direction: Vector2 = Vector2.ZERO
 var projectile_depleted: bool = false
 var melee_depleted: bool = false
 
+var ani_playing:=false
+
 
 
 func _input(event: InputEvent) -> void:
@@ -77,7 +79,7 @@ func _physics_process(delta: float):
 func _movement_loop(delta: float):
 	var direction: Vector2 = Vector2.ZERO
 	
-	if Input.is_mouse_button_pressed(BUTTON_RIGHT):
+	if Input.is_mouse_button_pressed(BUTTON_RIGHT) and !ani_playing:
 		var mouse_position: Vector2 = get_global_mouse_position()
 		if mouse_position.x > self.position.x:
 			$Sprite.flip_h = false
@@ -108,15 +110,14 @@ func _fire_projectile(direction: Vector2):
 		
 		if projectile_gauge <= 0:
 			projectile_depleted = true
-	else:
-		# TODO: Animation no energy for projectile
-		pass
 
 
 func _slash_attack(direction: Vector2):
 	if melee_gauge > 0 and not melee_depleted:
 		$RayCast2D.cast_to = direction * melee_range
 		$Sword.play()
+		ani_player.play("attack")
+		ani_playing = true
 		
 		if $RayCast2D.is_colliding():
 			var collider: Object = $RayCast2D.get_collider()
@@ -129,17 +130,17 @@ func _slash_attack(direction: Vector2):
 			
 			if melee_gauge <= 0:
 				melee_depleted = true
-	else:
-		# TODO: Animation no energy for projectile
-		pass
+
 
 func _set_melee_gauge(value: float) -> float:
-
 	melee_gauge = value
 	return self.melee_gauge
-	
 
 
 func take_damage(damage: int) -> void:
 	$Hurt.play()
 	emit_signal("took_damage", damage)
+
+
+func animation_finished():
+	ani_playing = false
