@@ -1,6 +1,8 @@
 extends KinematicBody2D
 signal took_damage(damage)
 
+onready var ani_player := $AnimationPlayer
+
 const PROJECTILE: PackedScene = preload("res://Projectile.tscn")
 const ACCELERATION: int = 200
 
@@ -37,6 +39,7 @@ func _input(event: InputEvent) -> void:
 		
 		if abs(delta_x) < 5 and abs(delta_y) < 5:
 			_fire_projectile(self.position.direction_to(final_mouse_position))
+			ani_player.play("cast")
 			return
 		
 		#choosing whether swipe was a horizontal or a vertical swipe
