@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Resources/Fonts/sinistre/Sinistre-S†Caroline.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://Resources/templar.png" type="Texture" id=2]
+[ext_resource path="res://sfx/Sword.tscn" type="PackedScene" id=3]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Control
@@ -9,6 +10,10 @@ script/source = "extends Control
 
 func _on_Button_pressed():
 	get_tree().change_scene(\"res://Maps/Main0.tscn\")
+
+
+func _on_Button_mouse_entered():
+	$Sword.play()
 "
 
 [sub_resource type="DynamicFont" id=2]
@@ -167,7 +172,9 @@ flat = true
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 231.825, 244.425 )
 frames = SubResource( 15 )
-frame = 10
 playing = true
 
+[node name="Sword" parent="." instance=ExtResource( 3 )]
+
+[connection signal="mouse_entered" from="VBoxContainer/Button" to="." method="_on_Button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_Button_pressed"]
