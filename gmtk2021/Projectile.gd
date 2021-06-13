@@ -3,7 +3,7 @@ extends KinematicBody2D
 const ACCELERATION: int = 1200
 
 var direction: Vector2 = Vector2.ZERO
-var offset: int = -5
+var offset: int = 1
 var damage: int = 5
 
 
