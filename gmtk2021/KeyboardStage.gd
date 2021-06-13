@@ -4,7 +4,7 @@ onready var player:= $Saladin
 
 
 func _ready():
-#	spawn_zombie()
+	spawn_zombie()
 	spawn_crawler_zombie()
 
 func spawn_zombie():
