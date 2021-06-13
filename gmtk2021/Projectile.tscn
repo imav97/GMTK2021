@@ -4,7 +4,7 @@
 [ext_resource path="res://Resources/fireball.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 32.4212
+radius = 15.7763
 
 [sub_resource type="Animation" id=2]
 resource_name = "casting"

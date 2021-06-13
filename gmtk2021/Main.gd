@@ -37,5 +37,4 @@ func _on_Character_damage(damage: int) -> void:
 	$CanvasLayer/Control/CenterContainer/TextureProgress.value = health
 	
 	if health <= 0:
-		pass
-		#TODO: Add Gameover
+		get_tree().change_scene("res://GameOver.tscn")

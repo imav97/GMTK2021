@@ -25,7 +25,7 @@ var credits = [
 		"A game by LFJ Game Studios"
 	],[
 		"Programming",
-		"Jose Monagas - Templar",
+		"Templar",
 		"Ismail Amer - Bolshevik"
 	],[
 		"Art",

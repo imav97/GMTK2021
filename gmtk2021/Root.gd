@@ -3,7 +3,7 @@ extends Control
 
 
 func _on_Start_pressed():
-	get_tree().change_scene("")#sorry m8 no se cual es el main
+	get_tree().change_scene("res://GeneralInstructions.tscn")
 
 
 func _on_Credits_pressed():

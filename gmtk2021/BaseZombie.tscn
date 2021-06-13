@@ -49,3 +49,6 @@ stream = ExtResource( 4 )
 [node name="BloodParticles" parent="." instance=ExtResource( 6 )]
 
 [node name="FireParticles" parent="." instance=ExtResource( 5 )]
+
+[node name="AttackBuffer" type="Timer" parent="."]
+[connection signal="timeout" from="AttackBuffer" to="." method="_on_AttackBuffer_timeout"]

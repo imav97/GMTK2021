@@ -7,16 +7,16 @@ const PROJECTILE: PackedScene = preload("res://Projectile.tscn")
 const ACCELERATION: int = 200
 
 
-export var projectile_damage: int = 10
+export var projectile_damage: int = 20
 export var projectile_gauge: float = 100
 export var projectile_depletion: int = 15
-export var projectile_recovery: int = 5
+export var projectile_recovery: int = 20
 
 export var melee_damage: int = 30
 export var melee_range: int = 40
 export var melee_gauge: float = 100
 export var melee_depletion: int = 10
-export var melee_recovery: int = 5
+export var melee_recovery: int = 20
 
 var initial_mouse_position := Vector2.ZERO
 var final_mouse_position := Vector2.ZERO

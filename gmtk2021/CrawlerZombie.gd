@@ -1,7 +1,8 @@
 extends KinematicBody2D
 
 const ACCELERATION: int = 5
-const DETECTION_RANGE: int = 60000
+const DETECTION_RANGE: int = 100000
+const ATTACK_RANGE: int = 1000
 
 onready var ani_player := $AnimationPlayer
 
@@ -18,6 +19,13 @@ var attacking:=false
 func _physics_process(delta: float) -> void:
 	
 	if !player == null:
+		
+		if self.position.distance_squared_to(player.global_position) < ATTACK_RANGE and attacking:
+			player.take_damage(self.damage)
+			$AttackBuffer.start()
+			$Grunt.play()
+		
+		
 		if self.position.distance_squared_to(player.position) < DETECTION_RANGE:
 			var player_direction = (player.position - self.position).normalized()
 			if player.position.x < self.position.x :
@@ -28,14 +36,16 @@ func _physics_process(delta: float) -> void:
 		if !attacking:
 			ani_player.play("walk")
 		
-		
-	if health <= 0:
-		get_tree().queue_delete(self)
+	
 
 
 func take_damage(damage: int) -> void:
 	health -= damage
-	print('melee hit registered')
+	
+		
+	if health <= 0:
+		queue_free()
+
 
 
 func jump_attack():
@@ -51,7 +61,7 @@ func _on_timer_timeout():
 
 
 func _on_Area2D_body_entered(body):
-	if body.name == "Saladin" or body.name == "Templar":
+	if body.name == "Character":
 		ani_player.play("attack")
 		print("detected: ", body.name)
 		attacking = true

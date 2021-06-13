@@ -78,7 +78,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 7.63687, 14.7958 )
+extents = Vector2( 3.5979, 10.7651 )
 
 [sub_resource type="StyleBoxTexture" id=6]
 texture = ExtResource( 7 )
@@ -113,7 +113,7 @@ anims/idle = SubResource( 3 )
 anims/walk = SubResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.314972, 0.944939 )
+position = Vector2( -2.35965, 0.807768 )
 shape = SubResource( 5 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]

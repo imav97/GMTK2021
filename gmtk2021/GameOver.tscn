@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Resources/Fonts/sinistre/Sinistre-S†Caroline.otf" type="DynamicFontData" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+
+func _ready():
+	$AnimationPlayer.play(\"default\")
+
+
+func _on_Timer_timeout():
+	get_tree().change_scene(\"res://Root.tscn\")
+"
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "default"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="GameOver" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0392157, 0.027451, 0.027451, 1 )
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.5
+margin_top = -10.0
+margin_right = 64.5
+margin_bottom = 10.0
+custom_fonts/font = SubResource( 2 )
+text = "G A  M E  O V E R"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/default = SubResource( 3 )
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

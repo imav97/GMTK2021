@@ -13,4 +13,4 @@ position = Vector2( 292.292, 203.954 )
 [node name="BaseZombie2" parent="." index="2" groups=[
 "enemies",
 ] instance=ExtResource( 1 )]
-position = Vector2( 281.476, 160 )
+position = Vector2( 216, 224 )

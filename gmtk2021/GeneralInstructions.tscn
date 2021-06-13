@@ -1,0 +1,234 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://Resources/saladin.png" type="Texture" id=1]
+[ext_resource path="res://Resources/Fonts/sinistre/Sinistre-S†Caroline.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://Resources/templar.png" type="Texture" id=3]
+
+[sub_resource type="GDScript" id=27]
+script/source = "extends Control
+
+
+func _on_Button_pressed():
+	get_tree().change_scene(\"res://SaladinInstructions.tscn\")
+"
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 2 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 44, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 44, 0, 44, 32 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 88, 0, 44, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 1 )
+region = Rect2( 132, 0, 44, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 1 )
+region = Rect2( 176, 0, 44, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 1 )
+region = Rect2( 220, 0, 44, 32 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 1 )
+region = Rect2( 264, 0, 44, 32 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 1 )
+region = Rect2( 308, 0, 44, 32 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 1 )
+region = Rect2( 352, 0, 44, 32 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 1 )
+region = Rect2( 396, 0, 44, 32 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 1 )
+region = Rect2( 440, 0, 44, 32 )
+
+[sub_resource type="SpriteFrames" id=14]
+animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 44, 32 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 3 )
+region = Rect2( 44, 0, 44, 32 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 3 )
+region = Rect2( 88, 0, 44, 32 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 3 )
+region = Rect2( 132, 0, 44, 32 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 3 )
+region = Rect2( 176, 0, 44, 32 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 3 )
+region = Rect2( 220, 0, 44, 32 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 3 )
+region = Rect2( 264, 0, 44, 32 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 3 )
+region = Rect2( 308, 0, 44, 32 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 3 )
+region = Rect2( 352, 0, 44, 32 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 3 )
+region = Rect2( 396, 0, 44, 32 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 3 )
+region = Rect2( 440, 0, 44, 32 )
+
+[sub_resource type="SpriteFrames" id=26]
+animations = [ {
+"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="GeneralInstructions" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.054902, 0.0509804, 0.0509804, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 470.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 1 )
+text = "INSTRUCTIONS"
+align = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+margin_top = 24.0
+margin_right = 470.0
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 1 )
+align = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+margin_top = 48.0
+margin_right = 470.0
+margin_bottom = 68.0
+custom_fonts/font = SubResource( 1 )
+text = "This game is intended as a single-player splitscreen experience."
+align = 1
+
+[node name="Label6" type="Label" parent="VBoxContainer"]
+margin_top = 72.0
+margin_right = 470.0
+margin_bottom = 92.0
+custom_fonts/font = SubResource( 1 )
+align = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer"]
+margin_top = 96.0
+margin_right = 470.0
+margin_bottom = 116.0
+custom_fonts/font = SubResource( 1 )
+text = "A Curse has fallen upon the Holy Land and to stop it "
+align = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer"]
+margin_top = 120.0
+margin_right = 470.0
+margin_bottom = 140.0
+custom_fonts/font = SubResource( 1 )
+text = "Saladin has joined hand with the Crusaders."
+align = 1
+
+[node name="Label7" type="Label" parent="VBoxContainer"]
+margin_top = 144.0
+margin_right = 470.0
+margin_bottom = 164.0
+custom_fonts/font = SubResource( 1 )
+text = "Erradicate the enemy or there will be nothing left to worship."
+align = 1
+
+[node name="Label8" type="Label" parent="VBoxContainer"]
+margin_top = 168.0
+margin_right = 470.0
+margin_bottom = 188.0
+custom_fonts/font = SubResource( 1 )
+align = 1
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+margin_left = 185.0
+margin_top = 192.0
+margin_right = 285.0
+margin_bottom = 218.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 2 )
+text = "CONTINUE"
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 51.0268, 221.746 )
+frames = SubResource( 14 )
+frame = 2
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
+position = Vector2( 403.175, 225.526 )
+frames = SubResource( 26 )
+frame = 7
+playing = true
+flip_h = true
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_Button_pressed"]
