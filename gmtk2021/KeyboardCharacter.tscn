@@ -19,7 +19,7 @@ tracks/0/keys = {
 "values": [ 4, 5, 6 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "cast"
 length = 0.24
 step = 0.12
@@ -53,7 +53,7 @@ tracks/0/keys = {
 "values": [ 7, 8 ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=4]
 loop = true
 step = 0.25
 tracks/0/type = "value"
@@ -83,9 +83,9 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 1 )
-anims/cast = SubResource( 4 )
+anims/cast = SubResource( 2 )
 anims/idle = SubResource( 3 )
-anims/walk = SubResource( 2 )
+anims/walk = SubResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )

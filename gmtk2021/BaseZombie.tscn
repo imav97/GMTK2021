@@ -4,7 +4,7 @@
 [ext_resource path="res://Resources/zombie.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 16 )
+extents = Vector2( 8, 14.2426 )
 
 [sub_resource type="Animation" id=2]
 loop = true
@@ -23,7 +23,7 @@ tracks/0/keys = {
 }
 
 [node name="BaseZombie" type="KinematicBody2D"]
-scale = Vector2( 5, 5 )
+scale = Vector2( 1.25104, 1.23929 )
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -31,6 +31,8 @@ texture = ExtResource( 2 )
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 1.69824 )
+scale = Vector2( 0.836932, 1.02004 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
