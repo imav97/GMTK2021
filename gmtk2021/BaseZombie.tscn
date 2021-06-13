@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://BaseZombie.gd" type="Script" id=1]
 [ext_resource path="res://Resources/zombie.png" type="Texture" id=2]
 [ext_resource path="res://sfx/426627__mrh4hn__zombie-grunt.wav" type="AudioStream" id=3]
 [ext_resource path="res://sfx/370036__punisherman__grunt.wav" type="AudioStream" id=4]
+[ext_resource path="res://vfx/FireParticles.tscn" type="PackedScene" id=5]
+[ext_resource path="res://vfx/BloodParticles.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 16 )
@@ -43,3 +45,7 @@ stream = ExtResource( 3 )
 
 [node name="Grunt" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
+
+[node name="BloodParticles" parent="." instance=ExtResource( 6 )]
+
+[node name="FireParticles" parent="." instance=ExtResource( 5 )]

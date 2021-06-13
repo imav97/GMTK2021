@@ -20,6 +20,10 @@ func _physics_process(delta: float) -> void:
 		
 		if self.position.distance_squared_to(player.position) < DETECTION_RANGE:
 			var player_direction = (player.global_position - self.global_position).normalized()
+			if player.position.x < self.position.x:
+				$Sprite.flip_h = true
+			else:
+				$Sprite.flip_h = false
 			move_and_slide(speed * player_direction)
 			
 			if not $Grunt.playing:
@@ -31,4 +35,13 @@ func take_damage(damage: int) -> void:
 	$Hurt.play()
 	if health <= 0:
 		queue_free()
-	
+
+
+
+func hit_by_fire():
+	$FireParticles.emitting = true
+
+
+func hit_by_melee():
+	$BloodParticles.emitting = true
+

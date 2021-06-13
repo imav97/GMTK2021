@@ -8,9 +8,9 @@
 [node name="BaseZombie" parent="." index="1" groups=[
 "enemies",
 ] instance=ExtResource( 1 )]
-position = Vector2( 292.292, 131.575 )
+position = Vector2( 292.292, 203.954 )
 
 [node name="BaseZombie2" parent="." index="2" groups=[
 "enemies",
 ] instance=ExtResource( 1 )]
-position = Vector2( 281.476, 87.621 )
+position = Vector2( 281.476, 160 )
