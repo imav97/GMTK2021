@@ -84,35 +84,10 @@ world_keyboard_node = NodePath("../Main0/Viewports/KeyboardChar/Viewport/0")
 world_mouse_node = NodePath("../Main0/Viewports/MouseChar/Viewport/0")
 next_main = "res://Maps/Main1.tscn"
 
-[node name="KeyboardChar" parent="Viewports" index="0"]
-margin_right = 235.0
-margin_bottom = 270.0
-
-[node name="Viewport" parent="Viewports/KeyboardChar" index="0"]
-size = Vector2( 235, 270 )
-
 [node name="0" parent="Viewports/KeyboardChar/Viewport" index="1" instance=ExtResource( 2 )]
 tile_set = SubResource( 4 )
-cell_size = Vector2( 16, 16 )
-cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
-format = 1
 tile_data = PoolIntArray(  )
-
-[node name="MouseChar" parent="Viewports" index="1"]
-margin_left = 245.0
-margin_right = 480.0
-margin_bottom = 270.0
-
-[node name="Viewport" parent="Viewports/MouseChar" index="0"]
-size = Vector2( 235, 270 )
 
 [node name="0" parent="Viewports/MouseChar/Viewport" index="1" instance=ExtResource( 1 )]
 tile_set = SubResource( 4 )
-cell_size = Vector2( 16, 16 )
-cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
-format = 1
 tile_data = PoolIntArray(  )
-
-[node name="TextureProgress" parent="CanvasLayer/Control/CenterContainer" index="0"]
-margin_left = 145.0
-margin_right = 335.0
