@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Resources/plaxBG_backgroundsClouds.png" type="Texture" id=1]
+[ext_resource path="res://BackgroundClouds.gd" type="Script" id=2]
+[ext_resource path="res://Resources/plaxBG_foregroundsClouds.png" type="Texture" id=3]
+[ext_resource path="res://Resources/sky.png" type="Texture" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 480, 270 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 480, 0, 480, 270 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 960, 0, 480, 270 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 2.0
+} ]
+
+[node name="DynamicClouds" type="Node2D"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 240, 136 )
+z_index = -3
+frames = SubResource( 4 )
+frame = 1
+playing = true
+
+[node name="BackgroundClouds" type="Node2D" parent="."]
+z_index = -2
+script = ExtResource( 2 )
+speed = 5
+limit = -1024
+
+[node name="Sprite" type="Sprite" parent="BackgroundClouds"]
+texture = ExtResource( 1 )
+
+[node name="Sprite2" type="Sprite" parent="BackgroundClouds"]
+position = Vector2( -1024, 0 )
+texture = ExtResource( 1 )
+
+[node name="BackgroundClouds2" type="Node2D" parent="."]
+z_index = -1
+script = ExtResource( 2 )
+speed = 11
+limit = -1024
+
+[node name="Sprite" type="Sprite" parent="BackgroundClouds2"]
+texture = ExtResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="BackgroundClouds2"]
+position = Vector2( -1024, 0 )
+texture = ExtResource( 3 )
