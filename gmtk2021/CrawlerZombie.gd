@@ -67,3 +67,11 @@ func slow_down():
 
 func stop():
 	speed = 0
+
+
+func hit_by_fire():
+	$FireParticles.emitting = true
+
+
+func hit_by_melee():
+	$BloodParticles.emitting = true

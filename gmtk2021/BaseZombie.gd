@@ -35,4 +35,13 @@ func take_damage(damage: int) -> void:
 	$Hurt.play()
 	if health <= 0:
 		queue_free()
-	
+
+
+
+func hit_by_fire():
+	$FireParticles.emitting = true
+
+
+func hit_by_melee():
+	$BloodParticles.emitting = true
+
