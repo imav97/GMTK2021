@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sfx/105016__julien-matthey__jm-fx-fireball-01.wav" type="AudioStream" id=1]
+
+[node name="Fire" type="AudioStreamPlayer2D"]
+stream = ExtResource( 1 )

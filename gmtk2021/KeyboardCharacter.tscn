@@ -1,15 +1,16 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://KeyboardCharacter.gd" type="Script" id=1]
 [ext_resource path="res://Resources/saladin.png" type="Texture" id=2]
-[ext_resource path="res://sfx/52458__audione__sword-01.wav" type="AudioStream" id=3]
-[ext_resource path="res://sfx/105016__julien-matthey__jm-fx-fireball-01.wav" type="AudioStream" id=4]
+[ext_resource path="res://sfx/Fire.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sfx/Sword.tscn" type="PackedScene" id=4]
 [ext_resource path="res://sfx/257709__vmgraw__grunt-2.wav" type="AudioStream" id=5]
 [ext_resource path="res://Resources/progress_mana.png" type="Texture" id=6]
 [ext_resource path="res://Resources/tile_0062.png" type="Texture" id=7]
 [ext_resource path="res://Resources/tile_0120.png" type="Texture" id=8]
 [ext_resource path="res://Resources/progress_bg.png" type="Texture" id=9]
 [ext_resource path="res://Resources/progress_melee.png" type="Texture" id=10]
+[ext_resource path="res://vfx/FireParticles.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
@@ -167,11 +168,9 @@ shape = SubResource( 5 )
 enabled = true
 cast_to = Vector2( 23, 0 )
 
-[node name="Sword" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 3 )
+[node name="Sword" parent="." instance=ExtResource( 4 )]
 
-[node name="Fire" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 4 )
+[node name="Fire" parent="." instance=ExtResource( 3 )]
 
 [node name="Hurt" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
@@ -243,4 +242,7 @@ custom_styles/fg = SubResource( 8 )
 custom_styles/bg = SubResource( 9 )
 max_value = 0.75
 percent_visible = false
+
+[node name="FireParticles" parent="." instance=ExtResource( 11 )]
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

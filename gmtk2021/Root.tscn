@@ -1,8 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Resources/Fonts/sinistre/Sinistre-S†Caroline.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://DynamicClouds.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Root.gd" type="Script" id=3]
+[ext_resource path="res://vfx/AnimatedSaladdin.tscn" type="PackedScene" id=4]
+[ext_resource path="res://vfx/AnimatedTemplar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sfx/Sword.tscn" type="PackedScene" id=6]
+[ext_resource path="res://sfx/Fire.tscn" type="PackedScene" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 35
@@ -68,6 +72,11 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
+[node name="AnimatedSaladdin" parent="MarginContainer/VBoxContainer/Buttons/HBoxContainer" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 182, 15 )
+frame = 9
+
 [node name="Start" type="Button" parent="MarginContainer/VBoxContainer/Buttons/HBoxContainer"]
 margin_left = 196.0
 margin_right = 263.0
@@ -79,6 +88,10 @@ custom_colors/font_color_pressed = Color( 0.984314, 0.580392, 0.278431, 1 )
 text = "Start"
 flat = true
 
+[node name="AnimatedTemplar" parent="MarginContainer/VBoxContainer/Buttons/HBoxContainer" instance=ExtResource( 5 )]
+visible = false
+position = Vector2( 278, 15 )
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Buttons"]
 margin_top = 42.0
 margin_right = 460.0
@@ -86,6 +99,11 @@ margin_bottom = 80.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
+
+[node name="AnimatedSaladdin2" parent="MarginContainer/VBoxContainer/Buttons/HBoxContainer2" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 166, 13 )
+frame = 9
 
 [node name="Credits" type="Button" parent="MarginContainer/VBoxContainer/Buttons/HBoxContainer2"]
 margin_left = 181.0
@@ -98,6 +116,11 @@ custom_colors/font_color_pressed = Color( 0.984314, 0.580392, 0.278431, 1 )
 text = "Credits"
 flat = true
 
+[node name="AnimatedTemplar2" parent="MarginContainer/VBoxContainer/Buttons/HBoxContainer2" instance=ExtResource( 5 )]
+visible = false
+position = Vector2( 294, 13 )
+frame = 1
+
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Buttons"]
 margin_top = 84.0
 margin_right = 460.0
@@ -105,6 +128,11 @@ margin_bottom = 123.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
+
+[node name="AnimatedSaladdin3" parent="MarginContainer/VBoxContainer/Buttons/HBoxContainer3" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 181, 19 )
+frame = 7
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/Buttons/HBoxContainer3"]
 margin_left = 198.0
@@ -117,7 +145,26 @@ custom_colors/font_color_pressed = Color( 0.984314, 0.580392, 0.278431, 1 )
 text = "Quit"
 flat = true
 
+[node name="AnimatedTemplar3" parent="MarginContainer/VBoxContainer/Buttons/HBoxContainer3" instance=ExtResource( 5 )]
+visible = false
+position = Vector2( 278, 19 )
+frame = 0
+
 [node name="DynamicBG" parent="." instance=ExtResource( 2 )]
+
+[node name="Sword" parent="." instance=ExtResource( 6 )]
+
+[node name="Fire" parent="." instance=ExtResource( 7 )]
+
+[connection signal="focus_entered" from="MarginContainer/VBoxContainer/Buttons/HBoxContainer/Start" to="." method="_on_Start_focus_entered"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Buttons/HBoxContainer/Start" to="." method="_on_Start_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VBoxContainer/Buttons/HBoxContainer/Start" to="." method="_on_Start_mouse_exited"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Buttons/HBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="focus_entered" from="MarginContainer/VBoxContainer/Buttons/HBoxContainer2/Credits" to="." method="_on_Credits_focus_entered"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Buttons/HBoxContainer2/Credits" to="." method="_on_Credits_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VBoxContainer/Buttons/HBoxContainer2/Credits" to="." method="_on_Credits_mouse_exited"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Buttons/HBoxContainer2/Credits" to="." method="_on_Credits_pressed"]
+[connection signal="focus_entered" from="MarginContainer/VBoxContainer/Buttons/HBoxContainer3/Quit" to="." method="_on_Quit_focus_entered"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Buttons/HBoxContainer3/Quit" to="." method="_on_Quit_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VBoxContainer/Buttons/HBoxContainer3/Quit" to="." method="_on_Quit_mouse_exited"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Buttons/HBoxContainer3/Quit" to="." method="_on_Quit_pressed"]

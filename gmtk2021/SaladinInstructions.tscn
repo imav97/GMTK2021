@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Resources/saladin.png" type="Texture" id=1]
 [ext_resource path="res://Resources/Fonts/sinistre/Sinistre-S†Caroline.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://sfx/Sword.tscn" type="PackedScene" id=3]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Control
@@ -10,6 +11,10 @@ script/source = "extends Control
 
 func _on_Button_pressed():
 	get_tree().change_scene(\"res://TemplarInstructions.tscn\")
+
+
+func _on_Button_mouse_entered():
+	$Sword.play()
 "
 
 [sub_resource type="DynamicFont" id=2]
@@ -159,4 +164,7 @@ frames = SubResource( 16 )
 frame = 4
 playing = true
 
+[node name="Sword" parent="." instance=ExtResource( 3 )]
+
+[connection signal="mouse_entered" from="VBoxContainer/Button" to="." method="_on_Button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_Button_pressed"]

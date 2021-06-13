@@ -26,6 +26,8 @@ var attack_direction: Vector2 = Vector2.ZERO
 var projectile_depleted: bool = false
 var melee_depleted: bool = false
 
+var ani_playing:=false
+
 
 
 func _input(event: InputEvent) -> void:
@@ -77,7 +79,7 @@ func _physics_process(delta: float):
 func _movement_loop(delta: float):
 	var direction: Vector2 = Vector2.ZERO
 	
-	if Input.is_mouse_button_pressed(BUTTON_RIGHT):
+	if Input.is_mouse_button_pressed(BUTTON_RIGHT) and !ani_playing:
 		var mouse_position: Vector2 = get_global_mouse_position()
 		if mouse_position.x > self.position.x:
 			$Sprite.flip_h = false
@@ -88,10 +90,8 @@ func _movement_loop(delta: float):
 	
 	var speed: Vector2 = direction * ACCELERATION
 	
-	if speed.length_squared() > 0:
+	if speed.length_squared() > 0 and !ani_playing:
 		$AnimationPlayer.play("walk")
-	else:
-		$AnimationPlayer.stop()
 	
 	move_and_slide(speed, Vector2.UP)
 	
@@ -103,20 +103,22 @@ func _fire_projectile(direction: Vector2):
 		get_parent().add_child(projectile)
 		
 		$Fire.play()
+		ani_player.play("cast")
+		ani_playing=true
+		emit_fire_particles()
 		projectile_gauge = projectile_gauge - projectile_depletion
 		$Control/VBoxContainer/HBoxContainer2/FireGauge.value = projectile_gauge
 		
 		if projectile_gauge <= 0:
 			projectile_depleted = true
-	else:
-		# TODO: Animation no energy for projectile
-		pass
 
 
 func _slash_attack(direction: Vector2):
 	if melee_gauge > 0 and not melee_depleted:
 		$RayCast2D.cast_to = direction * melee_range
 		$Sword.play()
+		ani_player.play("attack")
+		ani_playing = true
 		
 		if $RayCast2D.is_colliding():
 			var collider: Object = $RayCast2D.get_collider()
@@ -129,17 +131,22 @@ func _slash_attack(direction: Vector2):
 			
 			if melee_gauge <= 0:
 				melee_depleted = true
-	else:
-		# TODO: Animation no energy for projectile
-		pass
+
 
 func _set_melee_gauge(value: float) -> float:
-
 	melee_gauge = value
 	return self.melee_gauge
-	
 
 
 func take_damage(damage: int) -> void:
 	$Hurt.play()
 	emit_signal("took_damage", damage)
+
+
+func animation_finished():
+	ani_player.play("idle")
+	ani_playing = false
+
+
+func emit_fire_particles():
+	$FireParticles.emitting = true
