@@ -90,10 +90,8 @@ func _movement_loop(delta: float):
 	
 	var speed: Vector2 = direction * ACCELERATION
 	
-	if speed.length_squared() > 0:
+	if speed.length_squared() > 0 and !ani_playing:
 		$AnimationPlayer.play("walk")
-	else:
-		$AnimationPlayer.stop()
 	
 	move_and_slide(speed, Vector2.UP)
 	
@@ -105,6 +103,8 @@ func _fire_projectile(direction: Vector2):
 		get_parent().add_child(projectile)
 		
 		$Fire.play()
+		ani_player.play("cast")
+		ani_playing=true
 		projectile_gauge = projectile_gauge - projectile_depletion
 		$Control/VBoxContainer/HBoxContainer2/FireGauge.value = projectile_gauge
 		
@@ -143,4 +143,5 @@ func take_damage(damage: int) -> void:
 
 
 func animation_finished():
+	ani_player.play("idle")
 	ani_playing = false
