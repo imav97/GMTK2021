@@ -19,3 +19,4 @@ func _physics_process(delta: float) -> void:
 		if collision.collider.has_method("take_damage"):
 			collision.collider.take_damage(self.damage)
 			queue_free()
+
