@@ -2,7 +2,7 @@ extends KinematicBody2D
 signal took_damage(damage)
 
 const PROJECTILE: PackedScene = preload("res://Projectile.tscn")
-const ACCELERATION: int = 800
+const ACCELERATION: int = 200
 
 
 export var projectile_damage: int = 10
