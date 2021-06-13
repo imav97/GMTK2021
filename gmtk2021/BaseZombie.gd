@@ -22,7 +22,7 @@ func _physics_process(delta: float) -> void:
 			var player_direction = (player.global_position - self.global_position).normalized()
 			move_and_slide(speed * player_direction)
 			
-			if not $Grunt.playing():
+			if not $Grunt.playing:
 				$Grunt.play()
 
 
