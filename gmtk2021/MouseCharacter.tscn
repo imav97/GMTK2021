@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Resources/templar.png" type="Texture" id=1]
 [ext_resource path="res://MouseCharacter.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Resources/tile_0062.png" type="Texture" id=8]
 [ext_resource path="res://Resources/progress_mana.png" type="Texture" id=9]
 [ext_resource path="res://Resources/progress_melee.png" type="Texture" id=10]
+[ext_resource path="res://vfx/FireParticles.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
@@ -218,3 +219,5 @@ custom_styles/fg = SubResource( 8 )
 custom_styles/bg = SubResource( 9 )
 rounded = true
 percent_visible = false
+
+[node name="FireParticles" parent="." instance=ExtResource( 11 )]

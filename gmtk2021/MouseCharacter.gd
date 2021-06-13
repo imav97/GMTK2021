@@ -105,6 +105,7 @@ func _fire_projectile(direction: Vector2):
 		$Fire.play()
 		ani_player.play("cast")
 		ani_playing=true
+		emit_fire_particles()
 		projectile_gauge = projectile_gauge - projectile_depletion
 		$Control/VBoxContainer/HBoxContainer2/FireGauge.value = projectile_gauge
 		
@@ -145,3 +146,7 @@ func take_damage(damage: int) -> void:
 func animation_finished():
 	ani_player.play("idle")
 	ani_playing = false
+
+
+func emit_fire_particles():
+	$FireParticles.emitting = true

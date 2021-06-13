@@ -36,6 +36,7 @@ func _physics_process(delta: float) -> void:
 
 func take_damage(damage: int) -> void:
 	health -= damage
+	hit_by_melee()
 	$Hurt.play()
 	if health <= 0:
 		queue_free()

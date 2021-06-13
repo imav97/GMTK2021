@@ -87,6 +87,7 @@ func _input(event):
 	if event.is_action_pressed("mana_attack") and mana_timer.is_stopped():
 		mana_timer.start()
 		ani_playing = true
+		emit_fire_particles()
 		ani_player.play("cast")
 		var projectile: KinematicBody2D = PROJECTILE.instance()
 		var direction = $RayCast2D.cast_to.normalized()
@@ -116,7 +117,5 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	ani_playing = false
 
 
-#func _on_melee_timeout():
-#	print("timer timedout")
-#	melee_ready = true
-#
+func emit_fire_particles():
+	$FireParticles.emitting = true
