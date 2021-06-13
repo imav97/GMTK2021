@@ -62,7 +62,7 @@ func _input(event):
 		var projectile: KinematicBody2D = PROJECTILE.instance()
 		var direction = $RayCast2D.cast_to.normalized()
 		projectile.init(direction, self.position, attack_damage)
-		get_tree().root.add_child(projectile)
+		get_parent().add_child(projectile)
 
 
 func play_idle():
@@ -74,6 +74,10 @@ func _take_damage(damage: int) -> void:
 
 func finished_animation():
 	ani_playing = false
+	
+
+func take_damage(damage: int) -> void:
+	emit_signal("took_damage", damage)
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
