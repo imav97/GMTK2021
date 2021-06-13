@@ -33,3 +33,7 @@ size = Vector2( 239, 270 )
 zoom = Vector2( 0.75, 0.75 )
 
 [node name="0" parent="Viewports/MouseChar/Viewport" index="1" instance=ExtResource( 1 )]
+
+[node name="TextureProgress" parent="CanvasLayer/Control/CenterContainer" index="0"]
+margin_top = 0.0
+margin_bottom = 32.0

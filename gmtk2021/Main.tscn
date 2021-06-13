@@ -68,9 +68,8 @@ __meta__ = {
 
 [node name="TextureProgress" type="TextureProgress" parent="CanvasLayer/Control/CenterContainer"]
 margin_left = 120.0
-margin_top = 8.0
 margin_right = 360.0
-margin_bottom = 40.0
+margin_bottom = 32.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_under = ExtResource( 1 )

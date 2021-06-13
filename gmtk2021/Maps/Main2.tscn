@@ -12,3 +12,7 @@ next_main = "res://Maps/Main3.tscn"
 [node name="2" parent="Viewports/KeyboardChar/Viewport" index="1" instance=ExtResource( 3 )]
 
 [node name="2" parent="Viewports/MouseChar/Viewport" index="1" instance=ExtResource( 2 )]
+
+[node name="TextureProgress" parent="CanvasLayer/Control/CenterContainer" index="0"]
+margin_top = 0.0
+margin_bottom = 32.0
