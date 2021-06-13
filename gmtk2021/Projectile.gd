@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const ACCELERATION: int = 1200
+const ACCELERATION: int = 800
 
 var direction: Vector2 = Vector2.ZERO
 var offset: int = 100
