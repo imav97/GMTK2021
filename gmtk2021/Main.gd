@@ -1,18 +1,38 @@
 extends Node
 
-onready var camera_keyboard: Camera2D = $HBoxContainer/KeyboardChar/Viewport/Camera2D
-onready var camera_mouse: Camera2D = $HBoxContainer/MouseChar/Viewport/Camera2D
+export(NodePath) var world_keyboard_node: NodePath
+export(NodePath) var world_mouse_node: NodePath
+export(String, FILE, "*.tscn") var next_main: String
 
-onready var world_keyboard: Node2D = $HBoxContainer/KeyboardChar/Viewport/TEST_SCENE
-onready var world_mouse: Node2D = $HBoxContainer/MouseChar/Viewport/Stage
+var world_keyboard
+var world_mouse
+
+var health: int = 100
+var waves_cleared: int = 0
+
+onready var camera_keyboard: Camera2D = $Viewports/KeyboardChar/Viewport/Camera2D
+onready var camera_mouse: Camera2D = $Viewports/MouseChar/Viewport/Camera2D
+
 
 func _ready() -> void:
-	camera_keyboard.target = world_keyboard.get_node("KeyboardMovement")
-	camera_mouse.target = world_mouse.get_node("MouseCharacter") 
-	world_mouse.get_node("MouseCharacter").connect("took_damage", self, "_on_Character_damage")
-	world_keyboard.get_node("KeyboardMovement").connect("took_damage", self, "_on_Character_damage")
+	world_keyboard = get_node(world_keyboard_node)
+	world_mouse = get_node(world_mouse_node)
+	world_keyboard.connect("finished", self, "_on_Wave_Finished")
+	camera_keyboard.target = world_keyboard.get_node("Character")
+	camera_mouse.target = world_mouse.get_node("Character") 
+	world_mouse.get_node("Character").connect("took_damage", self, "_on_Character_damage")
+	world_keyboard.get_node("Character").connect("took_damage", self, "_on_Character_damage")
 
 
-func _character_damage(damage: int) -> void:
-	# TODO: update shared health bar
-	pass
+func _on_Wave_Finished() -> void:
+	waves_cleared += 1
+	if waves_cleared >= 2:
+		get_tree().change_scene(next_main)
+
+
+func _on_Character_damage(damage: int) -> void:
+	health -= damage
+	
+	if health <= 0:
+		pass
+		#TODO: Add Gameover

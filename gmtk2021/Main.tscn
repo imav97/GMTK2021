@@ -1,14 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://TEST_SCENE.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Stage.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Camera2D.gd" type="Script" id=3]
 [ext_resource path="res://Main.gd" type="Script" id=4]
 
 [node name="Main" type="Node"]
 script = ExtResource( 4 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Viewports" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/separation = 10
@@ -17,42 +15,39 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="KeyboardChar" type="ViewportContainer" parent="HBoxContainer"]
+[node name="KeyboardChar" type="ViewportContainer" parent="Viewports"]
 margin_right = 507.0
 margin_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 stretch = true
 
-[node name="Viewport" type="Viewport" parent="HBoxContainer/KeyboardChar"]
+[node name="Viewport" type="Viewport" parent="Viewports/KeyboardChar"]
 size = Vector2( 507, 600 )
 handle_input_locally = false
 render_target_update_mode = 3
 
-[node name="Camera2D" type="Camera2D" parent="HBoxContainer/KeyboardChar/Viewport"]
+[node name="Camera2D" type="Camera2D" parent="Viewports/KeyboardChar/Viewport"]
 current = true
 script = ExtResource( 3 )
 
-[node name="TEST_SCENE" parent="HBoxContainer/KeyboardChar/Viewport" instance=ExtResource( 1 )]
-
-[node name="MouseChar" type="ViewportContainer" parent="HBoxContainer"]
+[node name="MouseChar" type="ViewportContainer" parent="Viewports"]
 margin_left = 517.0
 margin_right = 1024.0
 margin_bottom = 600.0
+mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 stretch = true
 
-[node name="Viewport" type="Viewport" parent="HBoxContainer/MouseChar"]
+[node name="Viewport" type="Viewport" parent="Viewports/MouseChar"]
 size = Vector2( 507, 600 )
 handle_input_locally = false
 render_target_update_mode = 3
 
-[node name="Camera2D" type="Camera2D" parent="HBoxContainer/MouseChar/Viewport"]
+[node name="Camera2D" type="Camera2D" parent="Viewports/MouseChar/Viewport"]
 current = true
 script = ExtResource( 3 )
-
-[node name="Stage" parent="HBoxContainer/MouseChar/Viewport" instance=ExtResource( 2 )]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
