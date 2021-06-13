@@ -6,13 +6,13 @@ const ACCELERATION: int = 800
 
 
 export var projectile_damage: int = 10
-export var projectile_gauge: int = 100
+export var projectile_gauge: float = 100
 export var projectile_depletion: int = 15
 export var projectile_recovery: int = 5
 
 export var melee_damage: int = 30
 export var melee_range: int = 40
-export var melee_gauge: int = 100
+export var melee_gauge: float = 100
 export var melee_depletion: int = 10
 export var melee_recovery: int = 5
 
@@ -26,11 +26,11 @@ var melee_depleted: bool = false
 
 
 
-func _unhandled_input(event):
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
-		initial_mouse_position = event.position
+		initial_mouse_position = get_global_mouse_position()
 	if event.is_action_released("left_click"):
-		final_mouse_position = event.position
+		final_mouse_position = get_global_mouse_position()
 		
 		var delta_x: float = final_mouse_position.x - initial_mouse_position.x
 		var delta_y: float = final_mouse_position.y - initial_mouse_position.y
@@ -92,8 +92,8 @@ func _movement_loop(delta: float):
 func _fire_projectile(direction: Vector2):
 	if projectile_gauge > 0:
 		var projectile: KinematicBody2D = PROJECTILE.instance()
-		projectile.init(direction, self.position, projectile_damage)
-		get_tree().root.add_child(projectile)
+		projectile.init(direction, self.global_position, projectile_damage)
+		get_parent().add_child(projectile)
 		
 		projectile_gauge -= projectile_depletion
 		
@@ -122,5 +122,5 @@ func _slash_attack(direction: Vector2):
 		pass
 
 
-func _take_damage(damage: int) -> void:
+func take_damage(damage: int) -> void:
 	emit_signal("took_damage", damage)
