@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://KeyboardCharacter.gd" type="Script" id=1]
 [ext_resource path="res://Resources/saladin.png" type="Texture" id=2]
@@ -69,8 +69,11 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 7.37524, 15.1455 )
+
 [node name="KeyboardMovement" type="KinematicBody2D"]
-scale = Vector2( 2.87821, 3.17838 )
+scale = Vector2( 1.25514, 1.24594 )
 z_index = 1
 collision_layer = 2
 script = ExtResource( 1 )
@@ -90,6 +93,7 @@ hframes = 11
 frame = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 5 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 enabled = true
