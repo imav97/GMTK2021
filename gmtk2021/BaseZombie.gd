@@ -21,11 +21,14 @@ func _physics_process(delta: float) -> void:
 		if self.position.distance_squared_to(player.position) < DETECTION_RANGE:
 			var player_direction = (player.global_position - self.global_position).normalized()
 			move_and_slide(speed * player_direction)
+			
+			if not $Grunt.playing():
+				$Grunt.play()
 
 
 func take_damage(damage: int) -> void:
 	health -= damage
-	# TODO: Add VFX
+	$Hurt.play()
 	if health <= 0:
 		queue_free()
 	

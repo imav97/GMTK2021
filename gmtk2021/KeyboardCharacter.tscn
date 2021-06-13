@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://KeyboardCharacter.gd" type="Script" id=1]
 [ext_resource path="res://Resources/saladin.png" type="Texture" id=2]
+[ext_resource path="res://sfx/52458__audione__sword-01.wav" type="AudioStream" id=3]
+[ext_resource path="res://sfx/105016__julien-matthey__jm-fx-fireball-01.wav" type="AudioStream" id=4]
+[ext_resource path="res://sfx/257709__vmgraw__grunt-2.wav" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
@@ -99,4 +102,12 @@ shape = SubResource( 5 )
 enabled = true
 cast_to = Vector2( 23, 0 )
 
+[node name="Sword" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+
+[node name="Fire" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Resources/templar.png" type="Texture" id=1]
 [ext_resource path="res://MouseCharacter.gd" type="Script" id=2]
+[ext_resource path="res://sfx/568169__merrick079__sword-sound-2.wav" type="AudioStream" id=3]
+[ext_resource path="res://sfx/105016__julien-matthey__jm-fx-fireball-01.wav" type="AudioStream" id=4]
+[ext_resource path="res://sfx/257710__vmgraw__grunt-1.wav" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
@@ -96,3 +99,12 @@ shape = SubResource( 5 )
 [node name="RayCast2D" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( 20, 0 )
+
+[node name="Sword" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+
+[node name="Fire" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )

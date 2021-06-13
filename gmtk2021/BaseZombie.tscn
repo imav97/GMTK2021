@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://BaseZombie.gd" type="Script" id=1]
 [ext_resource path="res://Resources/zombie.png" type="Texture" id=2]
+[ext_resource path="res://sfx/426627__mrh4hn__zombie-grunt.wav" type="AudioStream" id=3]
+[ext_resource path="res://sfx/370036__punisherman__grunt.wav" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 14.2426 )
@@ -37,3 +39,9 @@ shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/walk = SubResource( 2 )
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+
+[node name="Grunt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
