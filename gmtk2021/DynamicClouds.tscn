@@ -35,7 +35,6 @@ animations = [ {
 position = Vector2( 240, 136 )
 z_index = -4
 frames = SubResource( 4 )
-frame = 2
 playing = true
 
 [node name="Houses" type="Sprite" parent="."]

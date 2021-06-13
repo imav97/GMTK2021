@@ -75,7 +75,7 @@ alignment = 1
 [node name="AnimatedSaladdin" parent="MarginContainer/VBoxContainer/Buttons/HBoxContainer" instance=ExtResource( 4 )]
 visible = false
 position = Vector2( 182, 15 )
-frame = 10
+frame = 7
 
 [node name="Start" type="Button" parent="MarginContainer/VBoxContainer/Buttons/HBoxContainer"]
 margin_left = 196.0
@@ -91,7 +91,7 @@ flat = true
 [node name="AnimatedTemplar" parent="MarginContainer/VBoxContainer/Buttons/HBoxContainer" instance=ExtResource( 5 )]
 visible = false
 position = Vector2( 278, 15 )
-frame = 3
+frame = 0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Buttons"]
 margin_top = 42.0
@@ -104,7 +104,7 @@ alignment = 1
 [node name="AnimatedSaladdin2" parent="MarginContainer/VBoxContainer/Buttons/HBoxContainer2" instance=ExtResource( 4 )]
 visible = false
 position = Vector2( 166, 13 )
-frame = 10
+frame = 7
 
 [node name="Credits" type="Button" parent="MarginContainer/VBoxContainer/Buttons/HBoxContainer2"]
 margin_left = 181.0
@@ -120,6 +120,7 @@ flat = true
 [node name="AnimatedTemplar2" parent="MarginContainer/VBoxContainer/Buttons/HBoxContainer2" instance=ExtResource( 5 )]
 visible = false
 position = Vector2( 294, 13 )
+frame = 10
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Buttons"]
 margin_top = 84.0
@@ -132,7 +133,7 @@ alignment = 1
 [node name="AnimatedSaladdin3" parent="MarginContainer/VBoxContainer/Buttons/HBoxContainer3" instance=ExtResource( 4 )]
 visible = false
 position = Vector2( 181, 19 )
-frame = 8
+frame = 5
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/Buttons/HBoxContainer3"]
 margin_left = 198.0
@@ -148,7 +149,7 @@ flat = true
 [node name="AnimatedTemplar3" parent="MarginContainer/VBoxContainer/Buttons/HBoxContainer3" instance=ExtResource( 5 )]
 visible = false
 position = Vector2( 278, 19 )
-frame = 1
+frame = 9
 
 [node name="DynamicBG" parent="." instance=ExtResource( 2 )]
 
