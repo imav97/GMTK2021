@@ -77,6 +77,7 @@ extents = Vector2( 7.63687, 14.7958 )
 
 [node name="MouseCharacter" type="KinematicBody2D"]
 scale = Vector2( 1.26186, 1.25856 )
+z_index = 1
 collision_layer = 2
 script = ExtResource( 2 )
 
