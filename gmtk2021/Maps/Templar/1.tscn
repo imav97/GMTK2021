@@ -12,13 +12,16 @@ position = Vector2( 243.988, 192 )
 "enemies",
 ] instance=ExtResource( 1 )]
 position = Vector2( 408, 200 )
+player_node = NodePath("../Character")
 
 [node name="BaseZombie2" parent="." index="2" groups=[
 "enemies",
 ] instance=ExtResource( 1 )]
 position = Vector2( 88, 179.95 )
+player_node = NodePath("../Character")
 
 [node name="BaseZombie3" parent="." index="3" groups=[
 "enemies",
 ] instance=ExtResource( 1 )]
 position = Vector2( 152, 227.24 )
+player_node = NodePath("../Character")

@@ -23,7 +23,8 @@ func _ready() -> void:
 	world_mouse.get_node("Character").connect("took_damage", self, "_on_Character_damage")
 	world_keyboard.get_node("Character").connect("took_damage", self, "_on_Character_damage")
 	
-	$CanvasLayer/Control/CenterContainer/TextureProgress.value = health	
+	$CanvasLayer/Control/CenterContainer/TextureProgress.value = health
+	$Viewports/MouseChar/Viewport.handle_input_locally = true
 
 
 func _on_Wave_Finished() -> void:

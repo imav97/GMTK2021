@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Resources/progress_hp_foreground.png" type="Texture" id=1]
-[ext_resource path="res://Resources/progress_hp.png" type="Texture" id=2]
+[ext_resource path="res://Resources/grey_button03.png" type="Texture" id=1]
+[ext_resource path="res://Resources/green_button02.png" type="Texture" id=2]
 [ext_resource path="res://Camera2D.gd" type="Script" id=3]
 [ext_resource path="res://Main.gd" type="Script" id=4]
 
@@ -67,13 +67,12 @@ __meta__ = {
 }
 
 [node name="TextureProgress" type="TextureProgress" parent="CanvasLayer/Control/CenterContainer"]
-margin_left = 120.0
-margin_top = 8.0
-margin_right = 360.0
-margin_bottom = 40.0
+margin_left = 145.0
+margin_right = 335.0
+margin_bottom = 49.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_under = ExtResource( 2 )
-texture_progress = ExtResource( 1 )
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
 fill_mode = 6
 tint_under = Color( 1, 0.976471, 0.976471, 1 )

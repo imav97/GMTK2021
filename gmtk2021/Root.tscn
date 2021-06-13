@@ -118,7 +118,6 @@ text = "Quit"
 flat = true
 
 [node name="DynamicBG" parent="." instance=ExtResource( 2 )]
-
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Buttons/HBoxContainer/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Buttons/HBoxContainer2/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Buttons/HBoxContainer3/Quit" to="." method="_on_Quit_pressed"]

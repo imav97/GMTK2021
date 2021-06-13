@@ -9,18 +9,22 @@
 "enemies",
 ] instance=ExtResource( 1 )]
 position = Vector2( 216, 192 )
+player_node = NodePath("../Character")
 
 [node name="BaseZombie2" parent="." index="3" groups=[
 "enemies",
 ] instance=ExtResource( 1 )]
 position = Vector2( 248, 228.053 )
+player_node = NodePath("../Character")
 
 [node name="BaseZombie3" parent="." index="4" groups=[
 "enemies",
 ] instance=ExtResource( 1 )]
 position = Vector2( 280, 193.956 )
+player_node = NodePath("../Character")
 
 [node name="BaseZombie4" parent="." index="5" groups=[
 "enemies",
 ] instance=ExtResource( 1 )]
 position = Vector2( 320, 224 )
+player_node = NodePath("../Character")

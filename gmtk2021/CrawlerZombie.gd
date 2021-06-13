@@ -5,6 +5,7 @@ const DETECTION_RANGE: int = 100000
 const ATTACK_RANGE: int = 1000
 
 onready var ani_player := $AnimationPlayer
+export var player_node: NodePath
 
 var player: KinematicBody2D
 var is_chasing: bool = false
@@ -14,6 +15,8 @@ var speed := 100
 var health := 50
 var attacking:=false
 
+func _ready():
+	player = get_node(player_node)
 
 
 func _physics_process(delta: float) -> void:
