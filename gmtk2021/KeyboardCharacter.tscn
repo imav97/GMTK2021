@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://KeyboardCharacter.gd" type="Script" id=1]
 [ext_resource path="res://Resources/saladin.png" type="Texture" id=2]
+[ext_resource path="res://sfx/52458__audione__sword-01.wav" type="AudioStream" id=3]
+[ext_resource path="res://sfx/105016__julien-matthey__jm-fx-fireball-01.wav" type="AudioStream" id=4]
+[ext_resource path="res://sfx/257709__vmgraw__grunt-2.wav" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
@@ -19,7 +22,7 @@ tracks/0/keys = {
 "values": [ 4, 5, 6 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "cast"
 length = 0.24
 step = 0.12
@@ -53,7 +56,7 @@ tracks/0/keys = {
 "values": [ 7, 8 ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=4]
 loop = true
 step = 0.25
 tracks/0/type = "value"
@@ -83,9 +86,9 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 1 )
-anims/cast = SubResource( 4 )
+anims/cast = SubResource( 2 )
 anims/idle = SubResource( 3 )
-anims/walk = SubResource( 2 )
+anims/walk = SubResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
@@ -99,4 +102,12 @@ shape = SubResource( 5 )
 enabled = true
 cast_to = Vector2( 23, 0 )
 
+[node name="Sword" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+
+[node name="Fire" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

@@ -53,6 +53,7 @@ func _input(event):
 		if now >= next_attack_time:
 			# Add cooldown time to current time
 			next_attack_time = now + attack_cooldown_time
+			$Sword.play()
 			var enemy = $RayCast2D.get_collider()
 			if enemy != null:
 				if enemy.has_method("take_damage"):
@@ -63,12 +64,14 @@ func _input(event):
 		var direction = $RayCast2D.cast_to.normalized()
 		projectile.init(direction, self.position, attack_damage)
 		get_parent().add_child(projectile)
+		$Fire.play()
 
 
 func play_idle():
 	ani_player.play("idle")
 	
 func _take_damage(damage: int) -> void:
+	$Hurt.play()
 	emit_signal("took_damage", damage)
 
 

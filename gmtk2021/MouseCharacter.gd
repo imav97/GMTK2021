@@ -95,6 +95,7 @@ func _fire_projectile(direction: Vector2):
 		projectile.init(direction, self.global_position, projectile_damage)
 		get_parent().add_child(projectile)
 		
+		$Fire.play()
 		projectile_gauge -= projectile_depletion
 		
 		if projectile_gauge <= 0:
@@ -107,6 +108,7 @@ func _fire_projectile(direction: Vector2):
 func _slash_attack(direction: Vector2):
 	if projectile_gauge > 0:
 		$RayCast2D.cast_to = direction * melee_range
+		$Sword.play()
 		
 		if $RayCast2D.is_colliding():
 			var collider: Object = $RayCast2D.get_collider()
@@ -123,4 +125,5 @@ func _slash_attack(direction: Vector2):
 
 
 func take_damage(damage: int) -> void:
+	$Hurt.play()
 	emit_signal("took_damage", damage)
