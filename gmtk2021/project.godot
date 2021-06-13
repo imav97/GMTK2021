@@ -19,6 +19,13 @@ config/name="gmtk2021"
 run/main_scene="res://Maps/Main0.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=480
+window/size/height=270
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
 [input]
 
 ui_accept={
