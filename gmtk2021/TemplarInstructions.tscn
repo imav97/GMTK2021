@@ -167,7 +167,7 @@ flat = true
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 231.825, 244.425 )
 frames = SubResource( 15 )
-frame = 9
+frame = 10
 playing = true
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_Button_pressed"]

@@ -227,13 +227,13 @@ flat = true
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 51.0268, 221.746 )
 frames = SubResource( 15 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
 position = Vector2( 403.175, 225.526 )
 frames = SubResource( 27 )
-frame = 9
+frame = 8
 playing = true
 flip_h = true
 
