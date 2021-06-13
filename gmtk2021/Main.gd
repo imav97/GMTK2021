@@ -22,6 +22,8 @@ func _ready() -> void:
 	camera_mouse.target = world_mouse.get_node("Character") 
 	world_mouse.get_node("Character").connect("took_damage", self, "_on_Character_damage")
 	world_keyboard.get_node("Character").connect("took_damage", self, "_on_Character_damage")
+	
+	$CanvasLayer/Control/CenterContainer/TextureProgress.value = health	
 
 
 func _on_Wave_Finished() -> void:
@@ -32,6 +34,7 @@ func _on_Wave_Finished() -> void:
 
 func _on_Character_damage(damage: int) -> void:
 	health -= damage
+	$CanvasLayer/Control/CenterContainer/TextureProgress.value = health
 	
 	if health <= 0:
 		pass

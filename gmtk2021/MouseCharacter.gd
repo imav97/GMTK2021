@@ -55,16 +55,20 @@ func _physics_process(delta: float):
 	_movement_loop(delta)
 	
 	if projectile_depleted:
-		projectile_gauge += projectile_recovery * delta
+		projectile_gauge = projectile_gauge + projectile_recovery * delta
 		if projectile_gauge >= 100:
 			projectile_gauge = 100
 			projectile_depleted = false
+		
+		$Control/VBoxContainer/HBoxContainer2/FireGauge.value = projectile_gauge
 	
 	if melee_depleted:
-		melee_gauge += melee_recovery * delta
+		melee_gauge = melee_gauge + melee_recovery * delta
 		if melee_gauge >= 100:
 			melee_gauge = 100
 			melee_depleted = false
+		
+		$Control/VBoxContainer/HBoxContainer/MeleeGauge.value = melee_gauge
 
 
 func _movement_loop(delta: float):
@@ -90,13 +94,14 @@ func _movement_loop(delta: float):
 	
 
 func _fire_projectile(direction: Vector2):
-	if projectile_gauge > 0:
+	if projectile_gauge > 0 and not projectile_depleted:
 		var projectile: KinematicBody2D = PROJECTILE.instance()
 		projectile.init(direction, self.global_position, projectile_damage)
 		get_parent().add_child(projectile)
 		
 		$Fire.play()
-		projectile_gauge -= projectile_depletion
+		projectile_gauge = projectile_gauge - projectile_depletion
+		$Control/VBoxContainer/HBoxContainer2/FireGauge.value = projectile_gauge
 		
 		if projectile_gauge <= 0:
 			projectile_depleted = true
@@ -106,7 +111,7 @@ func _fire_projectile(direction: Vector2):
 
 
 func _slash_attack(direction: Vector2):
-	if projectile_gauge > 0:
+	if melee_gauge > 0 and not melee_depleted:
 		$RayCast2D.cast_to = direction * melee_range
 		$Sword.play()
 		
@@ -115,13 +120,21 @@ func _slash_attack(direction: Vector2):
 			if collider.has_method("take_damage"):
 				collider.take_damage(melee_damage)
 			
-			melee_gauge -= melee_depletion
+			melee_gauge = melee_gauge - melee_depletion
+			$Control/VBoxContainer/HBoxContainer/MeleeGauge.value = melee_gauge
+			
 			
 			if melee_gauge <= 0:
 				melee_depleted = true
 	else:
 		# TODO: Animation no energy for projectile
 		pass
+
+func _set_melee_gauge(value: float) -> float:
+
+	melee_gauge = value
+	return self.melee_gauge
+	
 
 
 func take_damage(damage: int) -> void:
